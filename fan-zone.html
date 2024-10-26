@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fan Zone - Cricket Legends Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Ensure the font is consistent */
+        }
+        .centered {
+            text-align: center; /* Center the text */
+            margin: 20px;      /* Add some margin for spacing */
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;   /* Stack the form elements vertically */
+            align-items: center;      /* Center align the form elements */
+            margin: 20px;            /* Add margin for spacing */
+        }
+        form button {
+            margin-top: 15px; /* Add some space between form fields and button */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="centered">Fan Zone</h1>
+        <nav class="centered">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="player-profile.html">Player Profiles</a></li>
+                <li><a href="top-matches.html">Top Matches</a></li>
+                <li><a href="fan-zone.html">Fan Zone</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="fan-zone">
+        <h2 class="centered">Share Your Stories</h2>
+        <p class="centered">We want to hear from you! Share your favorite player stories and vote for the greatest players of all time.</p>
+        
+        <!-- Story Form -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-container">
+                <label for="id_name">Your Name:</label>
+                <input type="text" id="id_name" name="name" required>
+                
+                <label for="id_story">Your Story:</label>
+                <textarea id="id_story" name="story" rows="4" required></textarea>
+                
+                <button type="submit" name="submit_story">Submit Story</button>
+            </div>
+        </form>
+
+        <h2 class="centered">Vote for Your Favorite Player</h2>
+        <!-- Vote Form -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-container">
+                <label for="id_players">Choose your favorite player:</label>
+                <select id="id_players" name="players">
+                    <option value="player1">Virat kohli</option>
+                    <option value="player2">Rohit Sharma</option>
+                    <option value="player3">Sachin Tendulakar</option>
+                    <option value="player4">Joe Root</option>
+                    <option value="player5">Chris Gayle</option>
+                    <option value="player6">Steve Smith</option>
+                    <option value="player7">Kane Williamson</option>
+                    <option value="player8">Ricky Ponting</option>
+                </select>
+                <button type="submit" name="submit_vote">Vote</button>
+            </div>
+        </form>
+    </section>
+</body>
+</html>
